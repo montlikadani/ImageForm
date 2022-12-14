@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Drawing;
-using System.Drawing.Imaging;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace ImageForm {
@@ -13,11 +11,8 @@ namespace ImageForm {
             szulDate.MaxDate = DateTime.Today;
             szulDate.MinDate = DateTime.Now.AddYears(-250);
 
-            ImageCodecInfo[] codecs = ImageCodecInfo.GetImageEncoders();
-
-            openFileDialog.Filter = string.Format("{0}|All image files ({1})|{1}",
-                string.Join("|", codecs.Select(codec => string.Format("{0} ({1})|{1}", codec.CodecName, codec.FilenameExtension)).ToArray()),
-                string.Join(";", codecs.Select(codec => codec.FilenameExtension).ToArray()));
+            openFileDialog.Filter = Program.GetAllImageExtensions();
+            openFileDialog.AddExtension = openFileDialog.CheckFileExists = openFileDialog.CheckPathExists = true;
         }
 
         private async void addButton_Click(object sender, EventArgs e) {
@@ -35,6 +30,7 @@ namespace ImageForm {
         private void addImage_Click(object sender, EventArgs e) {
             if (openFileDialog.ShowDialog() == DialogResult.OK) {
                 pictureBox.Image = Image.FromFile(openFileDialog.FileName);
+                removeImgButton.Enabled = true;
             }
         }
 
@@ -47,6 +43,11 @@ namespace ImageForm {
             szulDate.Value = DateTime.Now.AddDays(-1);
             pictureBox.Image = null;
             addButton.Enabled = false;
+        }
+
+        private void removeImgButton_Click(object sender, EventArgs e) {
+            pictureBox.Image = null;
+            removeImgButton.Enabled = false;
         }
     }
 }

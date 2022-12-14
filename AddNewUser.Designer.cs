@@ -32,6 +32,7 @@
             this.addButton = new System.Windows.Forms.Button();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.cancelButton = new System.Windows.Forms.Button();
+            this.removeImgButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -114,11 +115,23 @@
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
+            // removeImgButton
+            // 
+            this.removeImgButton.Enabled = false;
+            this.removeImgButton.Location = new System.Drawing.Point(384, 147);
+            this.removeImgButton.Name = "removeImgButton";
+            this.removeImgButton.Size = new System.Drawing.Size(127, 31);
+            this.removeImgButton.TabIndex = 11;
+            this.removeImgButton.Text = "Kép eltávolítása";
+            this.removeImgButton.UseVisualStyleBackColor = true;
+            this.removeImgButton.Click += new System.EventHandler(this.removeImgButton_Click);
+            // 
             // AddNewUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(524, 246);
+            this.Controls.Add(this.removeImgButton);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.label2);
@@ -129,7 +142,7 @@
             this.Controls.Add(this.pictureBox);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "AddNewUser";
             this.ShowIcon = false;
@@ -154,5 +167,6 @@
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Button removeImgButton;
     }
 }

@@ -54,28 +54,23 @@ namespace ImageForm {
         }
 
         private async void removeButton_Click(object sender, EventArgs e) {
-            if (!(usersBox.SelectedItem is User user)) {
-                return;
-            }
-
-            if (MessageBox.Show("Biztosan el szeretné távolítani a kiválasztott felhasználót?", "felhasználói adat eltávolítása", MessageBoxButtons.OKCancel,
-                    MessageBoxIcon.Question) != DialogResult.OK) {
+            if (!(usersBox.SelectedItem is User user) || MessageBox.Show("Biztosan el szeretné távolítani a kiválasztott felhasználót?", "Felhasználói adat eltávolítása",
+                    MessageBoxButtons.OKCancel, MessageBoxIcon.Question) != DialogResult.OK) {
                 return;
             }
 
             await Database.PerformSqlCommand("delete from `felhasznalo` where `id` = @0;", user.Id);
-
+            RefreshUsers();
+            
             changeButton.Enabled = removeButton.Enabled = false;
             nevBox.Text = szulDate.Text = "";
             pictureBox.Image = null;
-            RefreshUsers();
-
-            MessageBox.Show("A kiválasztott felhasználó eltávolítva", "Felhasználói adat eltávolítva", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void changeButton_Click(object sender, EventArgs e) {
-            modifyUser.currentUser = usersBox.SelectedItem as User;
-            modifyUser.ShowDialog(this);
+            if ((modifyUser.currentUser = usersBox.SelectedItem as User) != null) {
+                modifyUser.ShowDialog(this);
+            }
         }
     }
 }

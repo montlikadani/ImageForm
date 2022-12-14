@@ -32,6 +32,7 @@
             this.szulDate = new System.Windows.Forms.DateTimePicker();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.cancelButton = new System.Windows.Forms.Button();
+            this.removeImgButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -77,7 +78,7 @@
             this.addImage.Name = "addImage";
             this.addImage.Size = new System.Drawing.Size(127, 28);
             this.addImage.TabIndex = 16;
-            this.addImage.Text = "Kép feltöltése";
+            this.addImage.Text = "Kép módosítása";
             this.addImage.UseVisualStyleBackColor = true;
             this.addImage.Click += new System.EventHandler(this.addImage_Click);
             // 
@@ -112,11 +113,22 @@
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
+            // removeImgButton
+            // 
+            this.removeImgButton.Location = new System.Drawing.Point(473, 144);
+            this.removeImgButton.Name = "removeImgButton";
+            this.removeImgButton.Size = new System.Drawing.Size(127, 31);
+            this.removeImgButton.TabIndex = 20;
+            this.removeImgButton.Text = "Kép eltávolítása";
+            this.removeImgButton.UseVisualStyleBackColor = true;
+            this.removeImgButton.Click += new System.EventHandler(this.removeImgButton_Click);
+            // 
             // ModifyUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(612, 204);
+            this.Controls.Add(this.removeImgButton);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.szulDate);
             this.Controls.Add(this.modifyUserButton);
@@ -127,7 +139,7 @@
             this.Controls.Add(this.pictureBox);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "ModifyUser";
             this.ShowIcon = false;
@@ -152,5 +164,6 @@
         private System.Windows.Forms.DateTimePicker szulDate;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Button removeImgButton;
     }
 }

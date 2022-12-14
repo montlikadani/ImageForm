@@ -11,16 +11,15 @@ namespace ImageForm {
 
             szulDate.MaxDate = DateTime.Today;
             szulDate.MinDate = DateTime.Now.AddYears(-250);
+
+            openFileDialog.Filter = Program.GetAllImageExtensions();
+            openFileDialog.AddExtension = openFileDialog.CheckFileExists = openFileDialog.CheckPathExists = true;
         }
 
         private void ModifyUser_Load(object sender, EventArgs e) {
-            if (currentUser == null) {
-                return;
-            }
-
             szulDate.Value = currentUser.SzulDate;
             nevBox.Text = currentUser.Nev;
-            pictureBox.Image = currentUser.ProfilePicture;
+            removeImgButton.Enabled = (pictureBox.Image = currentUser.ProfilePicture) != null;
         }
 
         private async void modifyUserButton_Click(object sender, EventArgs e) {
@@ -41,11 +40,17 @@ namespace ImageForm {
         private void addImage_Click(object sender, EventArgs e) {
             if (openFileDialog.ShowDialog() == DialogResult.OK) {
                 pictureBox.Image = System.Drawing.Image.FromFile(openFileDialog.FileName);
+                removeImgButton.Enabled = true;
             }
         }
 
         private void cancelButton_Click(object sender, EventArgs e) {
             Close();
+        }
+
+        private void removeImgButton_Click(object sender, EventArgs e) {
+            pictureBox.Image = null;
+            removeImgButton.Enabled = false;
         }
     }
 }
