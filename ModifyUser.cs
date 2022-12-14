@@ -52,5 +52,9 @@ namespace ImageForm {
             pictureBox.Image = null;
             removeImgButton.Enabled = false;
         }
+
+        private void nevBox_TextChanged(object sender, EventArgs e) {
+            modifyUserButton.Enabled = nevBox.Text.Trim().Length != 0;
+        }
     }
 }

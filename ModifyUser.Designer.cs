@@ -60,6 +60,7 @@
             this.nevBox.Name = "nevBox";
             this.nevBox.Size = new System.Drawing.Size(288, 22);
             this.nevBox.TabIndex = 12;
+            this.nevBox.TextChanged += new System.EventHandler(this.nevBox_TextChanged);
             // 
             // pictureBox
             // 
